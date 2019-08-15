@@ -16,6 +16,7 @@ async function start () {
   // Build only in dev mode
   if (config.dev) {
     const builder = new Builder(nuxt)
+    
     await builder.build()
   } else {
     await nuxt.ready()
