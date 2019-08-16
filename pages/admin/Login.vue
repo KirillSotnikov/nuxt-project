@@ -53,27 +53,24 @@ export default {
   },
   methods: {
     onSubmit() {
-       this.$refs.form.validate((valid) => {
+       this.$refs.form.validate(async (valid) => {
         if (valid) {
           this.loading = true
           
-          const formData = {
-            name: this.controls.login,
-            text: this.controls.password,
-            postId: ''
-          }
           try{
-            setTimeout(() => {
-              // this.$emit('created')
-              this.loading = false
-              this.$message.success('Comment was added')
-            },2000)
+            const formData = {
+              login: this.controls.login,
+              password: this.controls.password
+            }
+            
+            await this.$store.dispatch('auth/login', formData)
+            this.$router.push('/admin/')
           } catch(err) {
             this.loading = false
             throw new Error(err)
           }
         } else {
-          return false;
+          return this.loading =false;
         }
       });
     }
