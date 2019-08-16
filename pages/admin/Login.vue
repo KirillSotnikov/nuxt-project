@@ -59,6 +59,10 @@ export default {
         this.$message.info('You are not authorized!')
         break
       }
+      case 'logout' : {
+        this.$message.success('Logout success.')
+        break
+      }
     }
   },
   methods: {
