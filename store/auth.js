@@ -1,5 +1,5 @@
 export const state = () => ({
-  token : null
+  token : true
 })
 
 export const mutations = {
@@ -25,6 +25,14 @@ export const actions = {
   },
   logout({commit}) {
     commit('clearToken')
+  },
+  async createUser({commit}, payload) {
+    try{
+      console.log('createUser', payload)
+    } catch(err) {
+      console.log(err)
+      throw new Error(err)
+    }
   }
 }
 
