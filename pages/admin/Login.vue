@@ -51,6 +51,16 @@ export default {
       }
     }
   },
+  mounted() {
+    const {message} = this.$route.query
+
+    switch (message) {
+      case 'login' : {
+        this.$message.info('You are not authorized!')
+        break
+      }
+    }
+  },
   methods: {
     onSubmit() {
        this.$refs.form.validate(async (valid) => {
