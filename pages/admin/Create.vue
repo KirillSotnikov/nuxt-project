@@ -11,8 +11,16 @@
         <el-input v-model.trim="controls.title" />
       </el-form-item>
       <el-form-item label="Text in format .md or .html" prop="text">
-        <el-input type="textarea" resize="none" :rows="10" v-model.trim="controls.text" />
+        <el-input type="textarea" resize="none" :rows="10" v-model="controls.text" />
       </el-form-item>
+
+      <el-button class="mb" round type="success" plain @click="previewDalog = true">Preview</el-button>
+
+      <el-dialog title="Preview" :visible.sync="previewDalog">
+        <div :key="controls.text">
+          <vue-markdown>{{controls.text}}</vue-markdown>
+        </div>
+      </el-dialog>
 
 
       <el-form-item>
@@ -36,6 +44,7 @@ export default {
   data() {
     return {
       loading: false,
+      previewDalog: false,
       controls: {
         title: '',
         text: ''
@@ -79,5 +88,8 @@ export default {
 <style lang="scss" scoped>
   form{
     max-width: 600px;
+  }
+  .mb{
+    margin-bottom: 1rem;
   }
 </style>
