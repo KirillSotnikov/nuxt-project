@@ -41,10 +41,22 @@ export const actions = {
 
   },
   async create({commit}, payload) {
-    return await new Promise(resolve => {
-      setTimeout(() => {
-        resolve()
-      }, 500)
-    })
+
+    try{
+      const formData = new FormData()
+
+      formData.append('title', payload.title)
+      formData.append('text', payload.text)
+      formData.append('image', payload.image, payload.image.name)
+
+      return await new Promise(resolve => {
+        setTimeout(() => {
+          resolve()
+        }, 500)
+      })
+    } catch(err) {
+      console.log(err)
+      throw new Error(err)
+    }
   }
 }
