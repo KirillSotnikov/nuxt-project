@@ -39,5 +39,12 @@ export const actions = {
   },
   async update({commit}, payload) {
 
+  },
+  async create({commit}, payload) {
+    return await new Promise(resolve => {
+      setTimeout(() => {
+        resolve()
+      }, 500)
+    })
   }
 }
