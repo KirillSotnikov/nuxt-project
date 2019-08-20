@@ -16,6 +16,29 @@ const posts = [
 ]
 
 export const actions = {
+  async fetch({commit}) {
+    try{
+      return await this.$axios.$get('/api/post')
+    } catch(err) {
+      throw new Error(err)
+    }
+  },
+  async fetchById({commit}, payload) {
+    try{
+      return await this.$axios.$get(`/api/post/${payload}`)
+    } catch(err) {
+      throw new Error(err)
+    }
+  },
+  async addView({commit}, {views, _id}) {
+    try{
+      return await this.$axios.$put(`/api/post/add/view/${_id}`, {views})
+    } catch(err) {
+      throw new Error(err)
+    }
+  },
+
+
   async fetchAdmin({commit}) {
     try{
       return await this.$axios.$get('/api/post/admin')
