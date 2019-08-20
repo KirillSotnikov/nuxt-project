@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const authRoutes = require('./routes/auth.routes')
 const postRoutes = require('./routes/post.routes')
+const commentRoutes = require('./routes/comment.routes')
 const passport = require('passport')
 
 const passportStrategy = require('./middleware/passport-strategy')
@@ -21,5 +22,6 @@ app.use(bodyParser.json())
 
 app.use('/api/auth', authRoutes)
 app.use('/api/post', postRoutes)
+app.use('/api/comment', commentRoutes)
 
 module.exports = app
