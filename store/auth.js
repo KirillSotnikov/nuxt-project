@@ -21,9 +21,11 @@ export const actions = {
     }
   },
   setToken({commit}, payload) {
+    this.$axios.setToken(payload, 'Bearer')
     commit('setToken', payload)
   },
   logout({commit}) {
+    this.$axios.setToken(false)
     commit('clearToken')
   },
   async createUser({commit}, payload) {
@@ -39,5 +41,8 @@ export const actions = {
 export const getters = {
   isAuth(state) {
     return Boolean(state.token)
+  },
+  token() {
+    return state.token
   }
 }
