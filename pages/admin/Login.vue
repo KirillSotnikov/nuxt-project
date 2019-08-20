@@ -63,6 +63,10 @@ export default {
         this.$message.success('Logout success.')
         break
       }
+      case 'session' : {
+        this.$message.warning('Session timed out. Enter again.')
+        break
+      }
     }
   },
   methods: {
