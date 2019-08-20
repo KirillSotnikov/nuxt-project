@@ -17,28 +17,32 @@ const posts = [
 
 export const actions = {
   async fetchAdmin({commit}) {
-    return await new Promise(resolve => {
-      setTimeout(() => {
-        resolve(posts)
-      }, 500)
-    })
+    try{
+      return await this.$axios.$get('/api/post/admin')
+    } catch(err) {
+      throw new Error(err)
+    }
   },
   async remove({commit}, payload) {
-    
+    try{
+      return await this.$axios.$delete(`/api/post/admin/${payload}`)
+    } catch(err) {
+      throw new Error(err)
+    }
   },
   async fetchAdminById({commit}, payload){
-    // console.log(payload)
-    return await new Promise(resolve => {
-      setTimeout(() => {
-        let post = posts.find(item => {
-          return item._id == payload
-        })
-        resolve(post)
-      }, 500)
-    })
+    try{
+      return await this.$axios.$get(`/api/post/admin/${payload}`)
+    } catch(err) {
+      throw new Error(err)
+    }
   },
   async update({commit}, payload) {
-
+    try{
+      return await this.$axios.$put(`/api/post/admin/${payload.id}`, {text:payload.text})
+    } catch(err) {
+      throw new Error(err)
+    }
   },
   async create({commit}, payload) {
 
