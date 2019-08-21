@@ -52,7 +52,7 @@ export default {
   middleware: ['admin-auth'],
   head() {
     return {
-      title: `Post | ${this.post.title}`
+      title: `Edit - ${this.post.title} | ${process.env.appName}`
     }
   },
   validate({params}) {

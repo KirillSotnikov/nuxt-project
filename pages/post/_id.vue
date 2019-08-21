@@ -47,6 +47,11 @@ import AppComment from '@/components/main/Comment'
 import AppCommentForm from '@/components/main/CommentForm'
 
 export default {
+  head() {
+    return {
+      title: `${this.post.title} | ${process.env.appName}`
+    }
+  },
   components: {
     AppComment,
     AppCommentForm

@@ -32,6 +32,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: `Login to Admin panel | ${process.env.appName}`
+    }
+  },
   layout:'empty',
   data() {
     return {

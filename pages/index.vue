@@ -14,7 +14,7 @@
 import AppPost from '@/components/main/Post'
 export default {
   head: {
-    title: 'Main page'
+    title: `Main | ${process.env.appName}`
   },
   async asyncData({store}) {
     const posts = await store.dispatch('post/fetch')
