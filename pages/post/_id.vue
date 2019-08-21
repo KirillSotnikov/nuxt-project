@@ -8,7 +8,9 @@
         </nuxt-link>
       </div>
       <div class="post-info">
-        <small>{{ new Date(post.date).toLocaleString() }}</small>
+        <small>
+          {{ post.date | date }}
+        </small>
         <small>
           <i class="el-icon-view"></i>
           {{post.views}}
