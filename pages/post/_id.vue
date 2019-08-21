@@ -25,11 +25,14 @@
     </main>
     <footer>
       <!-- FORM -->
-      <app-comment-form v-if="canAddComment" @created="createCommentHandler" />
+      <app-comment-form 
+      :postId="post._id" 
+      v-if="canAddComment" 
+      @created="createCommentHandler" />
       <div class="comments" v-if="post.comments.length">
         <app-comment 
           v-for="comment in post.comments" 
-          :key="comment"
+          :key="comment._id"
           :comment="comment"></app-comment>
       </div>
       <div class="text-center" v-else>There are not comments! :(</div>
@@ -65,7 +68,8 @@ export default {
     return Boolean(params.id)
   },
   methods: {
-    createCommentHandler() {
+    createCommentHandler(comment) {
+      this.post.comments.unshift(comment)
       this.canAddComment = false
     }
   }

@@ -3,21 +3,26 @@
     class="comment"
   >
     <div class="comment-header">
-      <span>Person name</span>
+      <span>{{comment.name}}</span>
       <span>
         <i class="el-icon-time"></i>
-        {{ new Date().toLocaleString() }}
+        {{ new Date(comment.data).toLocaleString() }}
       </span>
     </div>
     <div class="comment-text">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci deserunt quos doloremque, optio quisquam hic placeat alias omnis odit at! Quisquam omnis animi tenetur iure dolores placeat laudantium nostrum earum?</p>
+      <p>{{comment.text}}</p>
     </div>
   </el-card>
 </template>
 
 <script>
 export default {
-  props: ['comment']
+  props: {
+    comment: {
+      type: Object,
+      required: true
+    }
+  }
 }
 </script>
 
