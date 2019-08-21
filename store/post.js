@@ -81,5 +81,15 @@ export const actions = {
       console.log(err)
       throw new Error(err)
     }
+  },
+
+
+  async getAnalytics({commit}) {
+    try{
+      return await this.$axios.$get('/api/post/admin/get/analytics')
+    } catch(err) {
+      console.log(err)
+      throw new Error(err)
+    }
   }
 }
